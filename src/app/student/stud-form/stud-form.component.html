@@ -1,0 +1,61 @@
+<form [formGroup]="stdudentform" (ngSubmit)="onaddstd()">
+    <div class="form-group">
+        <label for="fname">fname</label>
+        <input type="text" class="form-control" formControlName="fname">
+        <span class="text-danger" *ngIf="stdf['fname'].touched && stdf['fname'].hasError('required')">
+            this field is required !!!</span>
+        <ng-container *ngIf="stdf['fname'].dirty">
+            <span class="text-danger" *ngIf=" stdf['fname'].hasError('minlength')">
+                the minimum length is required {{stdf['fname'].errors?.['minlength'].requiredLength}}
+                and actual length is {{stdf['fname'].errors?.['minlength'].actualLength}}
+            </span>
+            <span class="text-danger" *ngIf="stdf['fname'].hasError('maxlength')">
+                the minimum length is required {{stdf['fname'].errors?.['maxlength'].requiredLength}}
+                and actual length is {{stdf['fname'].errors?.['maxlength'].actualLength}}
+            </span>
+            <span class="text-danger" *ngIf="stdf['fname'].hasError('pattern')">
+                plz enter only charchater
+            </span>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="lname">lname</label>
+        <input type="text" class="form-control" formControlName="lname">
+        <span class="text-danger" *ngIf="stdf['lname'].touched && stdf['lname'].hasError('required')"> this field is
+            required!!!</span>
+        <ng-container *ngIf="stdf['lname'].dirty">
+            <span class='text-danger' *ngIf="stdf['lname'].hasError('minlength')">
+                the minlength is required is{{stdf['lname'].errors?.['minlength'].requiredLength}} and actual length is
+                {{stdf['lname'].errors?.['minlength'].actualLength}} !!!
+            </span>
+            <span class="text-danger" *ngIf="stdf['lname'].hasError('maxlength')">
+                the maximum is requiredLength is{{ stdf['lname'].errors?.['maxlength'].requiredLength}} and actualLength
+                is {{stdf['lname'].errors?.['maxlength'].actualLength}} !!!</span>
+            <span class="text-success" *ngIf="stdf['lname'].hasError('pattern')">
+                plz enter only charchater !!!!
+            </span>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="contact">contact</label>
+        <input type="text" class="form-control" formControlName="contact">
+        <span class="text-danger" *ngIf="stdf['contact'].touched && stdf['contact'].hasError('required')">
+            
+            this field is required
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="emailid">emailid</label>
+        <input type="text" class="form-control" formControlName="emailid" >
+        <span class="text-danger" *ngIf="stdf['emailid'].touched && stdf['emailid'].hasError('required')"> this fiels is
+            required !!!</span>
+        <span class="text-danger" *ngIf="stdf['emailid'].dirty && stdf['emailid'].hasError('email')">
+            plz valid email id
+        </span>
+    </div>
+    <div class="text-right">
+        <button class="btn btn-outline-secondary"  *ngIf="!iseditmode" [disabled]="stdudentform.invalid">Add student</button>
+        <button class="btn btn-outline-secondary" *ngIf="iseditmode" type="button" (click)="onupdate()">update
+            student</button>
+    </div>
+</form>

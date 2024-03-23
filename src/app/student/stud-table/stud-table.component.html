@@ -1,0 +1,31 @@
+
+    <table class="table table-bordered dark" *ngIf="stdarr.length>0;else data ">
+        <thead>
+            <tr>
+                <th>sr no</th>
+                <th> fname</th>
+                <th>lname</th>
+                <th>contact</th>
+                <th>email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let std of stdarr;index as i">
+                <td>{{i+1}}</td>
+                <td>{{std.fname}}</td>
+                <td>{{std.lname}}</td>
+                <td>{{std.contact}}</td>
+                <td>{{std.emailid}}</td>
+                <td><button class="btn btn-outline-info" (click)="onedit(std)">Edit</button></td>
+                <td><button class="btn btn-outline-danger"(click)="onremovebtn(std)" >Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #data >
+        <p class="alert alert-info">student info not avaible is here !!!</p>
+    </ng-template>
+
+
+
